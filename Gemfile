@@ -54,3 +54,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-generators', '~> 3.3.4'
 gem 'bootstrap-sass-extras'
 gem 'tinymce-rails'
+gem 'record_tag_helper'
