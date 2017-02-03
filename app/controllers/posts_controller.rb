@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post
+  load_and_authorize_resource
 
   # GET /posts
   # GET /posts.json
@@ -34,6 +35,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        current_user.posts << @post
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else

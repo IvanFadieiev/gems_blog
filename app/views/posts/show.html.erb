@@ -8,7 +8,7 @@
       <dt class="label label-default"><%= model_class.human_attribute_name(:title) %></dt>
       <dd><pre class="prettyprint"><%= @post.title %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:link) %></dt>
-      <dd><pre class="prettyprint"><%= @post.link %></pre></dd>
+      <dd><pre class="prettyprint"><%= link_to @post.link, check_link(@post.try(:link)) %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:body) %></dt>
       <dd><pre class="prettyprint"><%= @post.body.html_safe %></pre></dd>
   </dl>
@@ -16,12 +16,14 @@
 
 <div class="form-group">
   <%= link_to t('.back', default: t("helpers.links.back")),
-              posts_path, class: 'btn btn-default'  %>
-  <%= link_to t('.edit', default: t("helpers.links.edit")),
-              edit_post_path(@post), class: 'btn btn-default' %>
-  <%= link_to t('.destroy', default: t("helpers.links.destroy")),
-              post_path(@post),
-              method: 'delete',
-              data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
-              class: 'btn btn-danger' %>
+              previous_page, class: 'btn btn-default'  %>
+  <% if can? :manage, Post %>
+    <%= link_to t('.edit', default: t("helpers.links.edit")),
+                edit_post_path(@post), class: 'btn btn-default' %>
+    <%= link_to t('.destroy', default: t("helpers.links.destroy")),
+                post_path(@post),
+                method: 'delete',
+                data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
+                class: 'btn btn-danger' %>
+  <% end %>
 </div>
