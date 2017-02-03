@@ -1,5 +1,5 @@
 <%= tinymce_assets %>
-<%= form_for @post, html: { class: 'form-horizontal' } do |f| %>
+<%= form_for [@category, @post], html: { class: 'form-horizontal' } do |f| %>
   <div class="form-group">
     <%= f.label :title, class: 'control-label col-md-2' %>
     <div class="col-md-10">
@@ -22,7 +22,9 @@
   <div class="form-group">
     <%= f.label 'Category', class: 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.select(:category_id, Category.all.collect {|u| [u.name, u.id]}, prompt: 'Select', selected: @post.category )%>
+      <%= f.select(:category_id, Category.all.collect {|u| [u.name, u.id]},
+                   {prompt: 'Select', selected: selected_category},
+                   { class: 'text_field form-control' }) %>
     </div>
   </div>
 
@@ -30,10 +32,9 @@
     <div class='col-md-offset-2 col-md-10'>
       <%= f.submit nil, class: 'btn btn-primary' %>
       <%= link_to t('.cancel', default: t("helpers.links.cancel")),
-                  posts_path, class: 'btn btn-default' %>
+                  @path, class: 'btn btn-default' %>
     </div>
   </div>
-
 
   <%= tinymce %>
 <% end %>

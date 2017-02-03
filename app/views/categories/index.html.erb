@@ -20,6 +20,9 @@
         <td><%= category.posts.count %></td>
         <td><%=l category.created_at, format: :long %></td>
         <td>
+          <%= link_to new_category_post_path(category), class: 'btn btn-xs', title: "#{ 'new post' }" do %>
+              <%= glyph 'plus' %>
+          <%- end -%>
           <%= link_to category_path(category), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>
           <%- end -%>
