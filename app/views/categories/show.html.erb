@@ -9,11 +9,11 @@
       <dd><pre class="prettyprint"><%= @category.name %></pre></dd>
   </dl>
 </div>
-  <ul>
-    <% @category.posts.each do |post| %>
-        <li><%= link_to post.title, post_path(post) %></li>
-    <% end %>
-  </ul>
+<ul>
+  <% @category.posts.each do |post| %>
+      <li><%= link_to post.title, post_path(post) %></li>
+  <% end %>
+</ul>
 <div class="form-group">
   <%= link_to t('.back', default: t("helpers.links.back")),
               previous_page, class: 'btn btn-default'  %>

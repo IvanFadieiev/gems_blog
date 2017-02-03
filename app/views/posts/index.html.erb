@@ -16,8 +16,8 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.id %></td>
-          <td><%= link_to post.title, post_path(post) %></td>
-          <td><%= link_to post.category.name, category_path(post.category)   %></td>
+        <td><%= link_to post.title, post_path(post) %></td>
+        <td><%= link_to post.category.name, category_path(post.category)   %></td>
         <td><%=l post.created_at, format: :long %></td>
         <td>
           <%= link_to post_path(post), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
