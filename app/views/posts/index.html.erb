@@ -16,7 +16,7 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.id %></td>
-          <td><%= link_to post.title, post.try(:link) %></td>
+          <td><%= link_to post.title, check_link(post.try(:link)) %></td>
           <td><%= post.category.name %></td>
         <td><%=l post.created_at, format: :long %></td>
         <td>
